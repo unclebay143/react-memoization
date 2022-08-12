@@ -1,3 +1,6 @@
+> Switching to [`with-memoize`](https://github.com/unclebay143/react-memoization/tree/with-memoize) branch
+
+
 ## Test after memoize: Typing inside the input box:
 
 - Without memoization
