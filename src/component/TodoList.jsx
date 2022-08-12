@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import "./todo.css";
 import { TodoListItem } from "./TodoListItem";
 
-export const TodoList = ({ todos, handleCompleted, trashTodo }) => {
+export const TodoList = memo(({ todos, handleCompleted, trashTodo }) => {
   console.log("TodoList component rendered");
   return (
     <ul className='todo-list'>
@@ -18,4 +18,4 @@ export const TodoList = ({ todos, handleCompleted, trashTodo }) => {
       })}
     </ul>
   );
-};
+});
