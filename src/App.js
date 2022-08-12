@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { TodoList } from "./component/TodoList";
 import { TodoForm } from "./component/TodoForm";
 
@@ -9,30 +9,39 @@ function App() {
   console.log(`App component rendered`);
 
   // Add a new todo
-  const addTodo = (title) => {
-    const newTodo = { title, completed: false, id: todos.length + 1 };
-    settodos([newTodo, ...todos]);
+  const addTodo = useCallback(
+    (title) => {
+      const newTodo = { title, completed: false, id: todos.length + 1 };
+      settodos([newTodo, ...todos]);
 
-    // clear form
-    settitle("");
-  };
+      // clear form
+      settitle("");
+    },
+    [todos]
+  );
 
   // Toggle a todo as completed
-  const handleCompleted = (id) => {
-    settodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed;
-        }
-        return todo;
-      })
-    );
-  };
+  const handleCompleted = useCallback(
+    (id) => {
+      settodos(
+        todos.map((todo) => {
+          if (todo.id === id) {
+            todo.completed = !todo.completed;
+          }
+          return todo;
+        })
+      );
+    },
+    [todos]
+  );
 
   // Delete a todo
-  const trashTodo = (id) => {
-    settodos(todos.filter((todo) => todo.id !== id));
-  };
+  const trashTodo = useCallback(
+    (id) => {
+      settodos(todos.filter((todo) => todo.id !== id));
+    },
+    [todos]
+  );
 
   return (
     <div className='todo-container'>
